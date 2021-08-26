@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
-.content {
+body {
+  background: rgb(77, 182, 74);
+  background: linear-gradient(
+    180deg,
+    rgba(77, 182, 74, 1) 0%,
+    rgba(154, 255, 151, 1) 100%
+  );
+}
+
+.fullContent {
   height: 100vh;
-  display: block;
 }
 
 #content-map {

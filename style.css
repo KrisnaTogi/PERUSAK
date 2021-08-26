@@ -4,22 +4,24 @@
   box-sizing: border-box;
 }
 
-body {
-  background: rgb(77, 182, 74);
-  background: linear-gradient(
-    180deg,
-    rgba(77, 182, 74, 1) 0%,
-    rgba(154, 255, 151, 1) 100%
-  );
-}
-
 .fullContent {
   height: 100vh;
+  scroll-behavior: smooth;
+}
+
+#cta {
+  background-image: url('./assets/emergency.jpg');
+}
+
+#cta-content {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #content-map {
-  background-image: url('./assets/peta-jakarta.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

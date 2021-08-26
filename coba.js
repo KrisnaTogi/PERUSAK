@@ -1,86 +1,3 @@
-let userForm = document.getElementById('user-form');
-let userPage = document.getElementById('user-page');
-const homepage = document.getElementById('homepage');
-const selectHospital = document.getElementById('selectHospital');
-let selectedCity = document.getElementById('selected-city');
-let selectedDisease = document.getElementById('selected-disease');
-
-userForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  tarikData(e);
-  pindahHalaman2();
-});
-
-function tarikData(event) {
-  console.log(event.target[0].value);
-}
-
-//Jika value input  = databaseRS[namaKota]
-//&& Jika penyakit nya kelas I dan databaseRS[namaKota][kamarTersedia][kelas] != 0
-
-function pindahHalaman2() {
-  // userPage.classList.add('d-none');
-  homepage.classList.add('d-none');
-  selectHospital.classList.remove('d-none');
-}
-
-function listRumahSakit(dataRS, dataPenyakit) {
-  
-  Jika selectedCity.
-  // output = {
-  //   nama: inputanNama,
-  //   rumahSakit: [
-  //     {
-  //       nama: 'RS Harapan Kasih',
-  //       alamat: 'Jl. Mangga no. 10',
-  //       kontak: '021-5362745',
-  //       kamarTersedia: jumlah
-  //     },
-  //     {
-  //       nama: 'RS Bunda',
-  //       alamat: 'Jl. Pear no. 1102',
-  //       kontak: '021-5345555',
-  //       kamarTersedia: jumlah
-  //     }
-  //   ]
-  };
-
-  const rumahSakitList = [//PENTING!!
-    {
-      nama: 'RS Harapan Kasih',
-      alamat: 'Jl. Mangga no. 10',
-      kontak: '021-5362745',
-      kamarTersedia: 0
-    },
-    {
-      nama: 'RS Bunda',
-      alamat: 'Jl. Pear no. 1102',
-      kontak: '021-5345555',
-      kamarTersedia: 0
-    }
-  ];
-
-  const listRumahSakitDOM = document.getElementById('listRumahSakit');
-  let output = ``;
-
-  for (const rumahSakit of rumahSakitList) {
-    output += `<div class="card m-2" style="width: 18rem">
-    <img
-      src="..."
-      class="card-img-top"
-      alt="${rumahSakit.nama}"
-    />
-    <div class="card-body">
-      <h5 class="card-title">${rumahSakit.nama}</h5>
-      <p class="card-text">${rumahSakit.alamat}</p>
-      <a href="#" class="btn btn-block btn-primary">Pilih</a>
-    </div>
-  </div>`;
-  }
-
-  listRumahSakitDOM.innerHTML = output;
-}
-
 const databaseRS = {
   jaksel: [
     {
@@ -244,7 +161,6 @@ const databaseRS = {
   ]
 };
 
-//database penyakit dengan kelasnya
 const databasePenyakit = {
   I: ['Rabies', 'HIV', 'Smallpox', 'COPID'],
 
@@ -252,3 +168,43 @@ const databasePenyakit = {
 
   III: ['Diare', 'Sakit Kepala', 'Iritasi', 'Lapar']
 };
+
+let userForm = document.getElementById('user-form');
+let userPage = document.getElementById('user-page');
+const homepage = document.getElementById('homepage');
+const selectHospital = document.getElementById('selectHospital');
+
+userForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const dataPasien = tarikData(e); // {nama: luis, domisili: jaksel, penyakit: diare}
+  console.log(dataPasien);
+
+  pindahHalaman2();
+});
+//JS algo here!!!
+
+function tarikData(event) {
+  const nama = event.target[0].value;
+  const domisili = event.target[1].value;
+  const penyakit = event.target[2].value;
+
+  if (
+    !nama ||
+    domisili === 'Cari Lokasi Loe!' ||
+    penyakit === 'Loe Sakit Apa?'
+  ) {
+    alert('DATA LOE GAK LENGKAP!');
+  }
+
+  return {
+    nama,
+    domisili,
+    penyakit
+  };
+}
+
+function pindahHalaman2() {
+  homepage.classList.add('d-none');
+  selectHospital.classList.remove('d-none');
+}

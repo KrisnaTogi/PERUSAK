@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
+#logo {
+  font-size: 32px;
+}
+
 .fullContent {
   height: 100vh;
   scroll-behavior: smooth;
+}
+
+#header {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #cta {
@@ -17,11 +25,54 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-#content-map {
+.trans {
+  transition: display 5s;
+}
+
+#map {
+  position: relative;
+}
+
+#jakpus-pin {
+  position: absolute;
+  top: 180px;
+  left: 300px;
+}
+
+#jakut-pin {
+  position: absolute;
+  top: 85px;
+  left: 450px;
+}
+
+#jaktim-pin {
+  position: absolute;
+  top: 300px;
+  left: 425px;
+}
+
+#jaksel-pin {
+  position: absolute;
+  top: 350px;
+  left: 250px;
+}
+
+#jakbar-pin {
+  position: absolute;
+  top: 165px;
+  left: 150px;
 }
 
 #header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.inputWarning {
+  border-color: red;
+}
+
+#warning-label {
+  color: red;
 }

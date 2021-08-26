@@ -26,7 +26,6 @@ function pindahHalaman2() {
 
 function listRumahSakit(dataRS, dataPenyakit) {
   
-  Jika selectedCity.
   // output = {
   //   nama: inputanNama,
   //   rumahSakit: [
@@ -66,7 +65,7 @@ function listRumahSakit(dataRS, dataPenyakit) {
   for (const rumahSakit of rumahSakitList) {
     output += `<div class="card m-2" style="width: 18rem">
     <img
-      src="..."
+      src="${rumahSakit.gambarURL}"
       class="card-img-top"
       alt="${rumahSakit.nama}"
     />
@@ -91,7 +90,8 @@ const databaseRS = {
         I: 50,
         II: 50,
         III: 0
-      }
+      },
+      gambarURL: 'https://images.adsttc.com/media/images/5181/866a/b3fc/4bde/c800/0050/newsletter/%CE%A9%C2%A8%C2%A1%C3%93%E2%88%8F%EF%AC%81%C2%B5%EF%A3%BF(re-a3)-01.jpg?1367443039'
     },
     {
       nama: 'RS Bunda',
@@ -101,7 +101,8 @@ const databaseRS = {
         I: 5,
         II: 10,
         III: 2
-      }
+      },
+      gambarURL: 'https://marvel-b1-cdn.bc0a.com/f00000000067087/www.bdcnetwork.com/sites/bdc/files/styles/content_display_image/public/image1.jpg?itok=OENUBl0H'
     },
     {
       nama: 'RS Cahaya',
@@ -111,7 +112,8 @@ const databaseRS = {
         I: 0,
         II: 1,
         III: 0
-      }
+      },
+      gambarURL: 'https://edgebuildings.com/wp-content/uploads/2015/11/banner-bt-hospitals.jpg'
     }
   ],
   jakbar: [
@@ -123,7 +125,8 @@ const databaseRS = {
         I: 20,
         II: 4,
         III: 11
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Bapak',
@@ -133,7 +136,8 @@ const databaseRS = {
         I: 12,
         II: 49,
         III: 20
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Kebun Labu',
@@ -143,7 +147,8 @@ const databaseRS = {
         I: 1,
         II: 0,
         III: 0
-      }
+      },
+      gambarURL: ''
     }
   ],
   jakut: [
@@ -155,7 +160,8 @@ const databaseRS = {
         I: 0,
         II: 2,
         III: 0
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Selamat',
@@ -165,7 +171,8 @@ const databaseRS = {
         I: 12,
         II: 19,
         III: 3
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Sungai',
@@ -175,7 +182,8 @@ const databaseRS = {
         I: 27,
         II: 0,
         III: 0
-      }
+      },
+      gambarURL: ''
     }
   ],
   jakpus: [
@@ -187,7 +195,8 @@ const databaseRS = {
         I: 90,
         II: 1000,
         III: 13
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Hacktiv',
@@ -197,7 +206,8 @@ const databaseRS = {
         I: 21,
         II: 41,
         III: 12
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Kota',
@@ -207,7 +217,8 @@ const databaseRS = {
         I: 130,
         II: 11,
         III: 0
-      }
+      },
+      gambarURL: ''
     }
   ],
   jaktim: [
@@ -219,7 +230,8 @@ const databaseRS = {
         I: 11,
         II: 1,
         III: 9
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS Bayi',
@@ -229,7 +241,8 @@ const databaseRS = {
         I: 0,
         II: 2,
         III: 15
-      }
+      },
+      gambarURL: ''
     },
     {
       nama: 'RS 88',
@@ -239,7 +252,8 @@ const databaseRS = {
         I: 8,
         II: 8,
         III: 8
-      }
+      },
+      gambarURL: ''
     }
   ]
 };

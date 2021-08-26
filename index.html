@@ -12,13 +12,13 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>PERUSAK JAKARTA - Pencarian Rumah Sakit di Jakarta</title>
+    <title>PERUSAK JAKARTA</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="">
-        <a class="navbar-brand" href="#">PERUSAK JAKARTA!</a>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="header">
+      <div class="mx-auto">
+        <a class="navbar-brand mx-auto" href="#" id="logo">PERUSAK<img src="./assets/hclogo-7.png" height="75px" class="mx-3">JAKARTA</a>
       </div>
     </nav>
 
@@ -42,7 +42,7 @@
         <div class="text-center">
           <h1>LOE BUTUH RUMAH SAKIT?</h1>
           <p>DARIPADA SAKIT-SAKITAN MENDING CARI RUMAH SAKIT</p>
-          <a href="#user-page" class="btn btn-danger">LOE KLIK DISINI!</a>
+          <a href="#user-page" class="btn btn-danger btn-lg p-4">LOE KLIK DISINI!</a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
         <div class="container h-100">
           <div class="row h-100">
             <div class="content-form col-sm h-100 d-flex align-items-center justify-content-center">
-              <div>
+              <div class="w-75">
                 <h2 class="text-center mb-5">Butuh Data Loe Nih!</h2>
                 <form id="user-form">
                   <div class="form-group">
@@ -88,13 +88,22 @@
                       </select>
                     </div>
                   </div>
-                  
+                  <div class="form-group d-none" id="warning-label-group">
+                    <label id="warning-label"></label>
+                  </div>
                   <button type="submit" class="btn btn-primary w-100">Submit</button>
                 </form>
               </div>
             </div>
             <div class="col-sm h-100 d-flex align-items-center justify-content-center" id="content-map">
-              <img src="./assets/peta-jakarta.png" alt="Peta Jakarta" />
+              <div id="map">
+                <img src="./assets/peta-jakarta.png" alt="Peta Jakarta" />
+                <img id="jakpus-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jakut-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jaktim-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jaksel-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jakbar-pin" class="d-none" src="assets/pin.png" width="25px">
+              </div>
             </div>
           </div>
         </div>
@@ -135,7 +144,10 @@
                 flex-wrap
               "
             >
-            <div id="listRumahSakit"></div>
+            <div id="cardHospitals" class="d-flex flex-wrap align-items-center justify-content-center"
+            ></div>
+          </div>
+            </div>
             </div>
           </div>
         </div>
@@ -145,6 +157,36 @@
     AKHIR HALAMAN PILIHAN RUMAH SAKIT
     -->
 
+       <!-- AWAL PAGE SELAMAT -->
+       <section id="successPage" class="fullContent d-none">
+        <div class="container h-100 d-flex align-items-center justify-content-center">
+          <div class="row h-100 d-flex align-items-center justify-content-center">
+            <div class="content-form col h-100 d-flex align-items-center justify-content-center ">
+              <div>
+  
+                <h2 class="text-center mb-5">Congrats <span id="namaPasien">nama</span>, Tidak Jadi Rusak!</h2>
+                <form>
+                    <div class="card text-center">
+                        <div class="card-header">
+                          INFO LENGKAP RS
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title"> Alamat : <span id="alamatRS">Special title treatment</span></h5>
+                          <h5 class="card-title"> Kontak : <span id="kontakRS">Special title treatment</span></h5>
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" id="btnBack" class="btn btn-secondary">Back</a>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AKHIR PAGE SELAMAT -->
+
     <script defer src="./coba.js"></script>
   </body>
 </html>
+ 

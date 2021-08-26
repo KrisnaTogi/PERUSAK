@@ -8,7 +8,9 @@ const databaseRS = {
         I: 50,
         II: 50,
         III: 0
-      }
+      },
+      gambarURL:
+        'https://images.adsttc.com/media/images/5181/866a/b3fc/4bde/c800/0050/newsletter/%CE%A9%C2%A8%C2%A1%C3%93%E2%88%8F%EF%AC%81%C2%B5%EF%A3%BF(re-a3)-01.jpg?1367443039'
     },
     {
       nama: 'RS Bunda',
@@ -18,7 +20,9 @@ const databaseRS = {
         I: 5,
         II: 10,
         III: 2
-      }
+      },
+      gambarURL:
+        'https://marvel-b1-cdn.bc0a.com/f00000000067087/www.bdcnetwork.com/sites/bdc/files/styles/content_display_image/public/image1.jpg?itok=OENUBl0H'
     },
     {
       nama: 'RS Cahaya',
@@ -28,7 +32,9 @@ const databaseRS = {
         I: 0,
         II: 1,
         III: 0
-      }
+      },
+      gambarURL:
+        'https://edgebuildings.com/wp-content/uploads/2015/11/banner-bt-hospitals.jpg'
     }
   ],
   jakbar: [
@@ -40,7 +46,9 @@ const databaseRS = {
         I: 20,
         II: 4,
         III: 11
-      }
+      },
+      gambarURL:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTonBeJUfVbCtchir_C4ky5wSYg0SOV5w8eA&usqp=CAU'
     },
     {
       nama: 'RS Bapak',
@@ -50,7 +58,9 @@ const databaseRS = {
         I: 12,
         II: 49,
         III: 20
-      }
+      },
+      gambarURL:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp-XNxnPoSsCOO_Jqcqym8wjCMdzeGv8kZNQ&usqp=CAU'
     },
     {
       nama: 'RS Kebun Labu',
@@ -60,7 +70,9 @@ const databaseRS = {
         I: 1,
         II: 0,
         III: 0
-      }
+      },
+      gambarURL:
+        'https://thumbs.dreamstime.com/b/elisabeth-hospital-bad-ischl-austria-exterior-old-kaiserin-krankenhaus-colorful-winter-sunset-160629088.jpg'
     }
   ],
   jakut: [
@@ -72,7 +84,8 @@ const databaseRS = {
         I: 0,
         II: 2,
         III: 0
-      }
+      },
+      gambarURL: 'https://s.hdnux.com/photos/01/11/16/61/19197022/3/1200x0.jpg'
     },
     {
       nama: 'RS Selamat',
@@ -82,7 +95,9 @@ const databaseRS = {
         I: 12,
         II: 19,
         III: 3
-      }
+      },
+      gambarURL:
+        'https://www.vaidam.com/sites/default/files/hospitals/continental_hospital_-_building.jpg'
     },
     {
       nama: 'RS Sungai',
@@ -92,7 +107,9 @@ const databaseRS = {
         I: 27,
         II: 0,
         III: 0
-      }
+      },
+      gambarURL:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCEpwTu85tZhb8BZELBCkCSorrLEW-Y9NwQ&usqp=CAU'
     }
   ],
   jakpus: [
@@ -104,7 +121,9 @@ const databaseRS = {
         I: 90,
         II: 1000,
         III: 13
-      }
+      },
+      gambarURL:
+        'https://u8k6t9e4.stackpathcdn.com/wp-content/uploads/Lines-of-Business/Hospital-Building/POSTED/B-WI_Columbia-StMarys_Hospital_2_DriDesign_lo-1900x1264.jpg'
     },
     {
       nama: 'RS Hacktiv',
@@ -114,7 +133,9 @@ const databaseRS = {
         I: 21,
         II: 41,
         III: 12
-      }
+      },
+      gambarURL:
+        'https://www.bdcnetwork.com/sites/bdc/files/styles/content_display_image/public/Beverly%20Knight%20Olson%20Children%E2%80%99s%20Hospital%2C%202019%20Healthcare%20Giants%20Report%2C%202019%20Giants%20300%20Report%2C%20Robins%20Morton%20Mount%20Sinai%20Photo%203_Beverly%20Knight%20Olson%20Children%E2%80%99s%20Hospital%20exterior_Robins%20%20%26%20Morton.jpg?itok=TcYZUM1g'
     },
     {
       nama: 'RS Kota',
@@ -124,7 +145,9 @@ const databaseRS = {
         I: 130,
         II: 11,
         III: 0
-      }
+      },
+      gambarURL:
+        'https://memetemplatehouse.com/wp-content/uploads/2020/07/joker-bombing-hospital-1024x576-1.jpg'
     }
   ],
   jaktim: [
@@ -136,7 +159,9 @@ const databaseRS = {
         I: 11,
         II: 1,
         III: 9
-      }
+      },
+      gambarURL:
+        'https://www.tatamulia.co.id/contents/gallery/V4WGc720191205144644.jpg'
     },
     {
       nama: 'RS Bayi',
@@ -146,7 +171,9 @@ const databaseRS = {
         I: 0,
         II: 2,
         III: 15
-      }
+      },
+      gambarURL:
+        'https://media.glassdoor.com/l/511569/aster-dm-healthcare-office.jpg'
     },
     {
       nama: 'RS 88',
@@ -156,7 +183,9 @@ const databaseRS = {
         I: 8,
         II: 8,
         III: 8
-      }
+      },
+      gambarURL:
+        'https://kingwood247er.com/wp-content/uploads/2018/07/KEC-Building.jpg'
     }
   ]
 };
@@ -173,29 +202,155 @@ let userForm = document.getElementById('user-form');
 let userPage = document.getElementById('user-page');
 const homepage = document.getElementById('homepage');
 const selectHospital = document.getElementById('selectHospital');
+const nameInput = document.getElementById('name');
+const selectCity = document.getElementById('selected-city');
+const selectDisease = document.getElementById('selected-disease');
+const warningLabel = document.getElementById('warning-label');
+const warningLabelGroup = document.getElementById('warning-label-group');
+const successPage = document.getElementById('successPage');
+const btnBack = document.getElementById('btnBack');
+const logo = document.getElementById('logo');
+
+nameInput.addEventListener('keyup', function (e) {
+  if (e.target.value) {
+    nameInput.classList.remove('inputWarning');
+  }
+});
+
+selectCity.addEventListener('change', function (e) {
+  if (e.target.selectedIndex !== 0) {
+    selectCity.classList.remove('inputWarning');
+  }
+});
+
+selectDisease.addEventListener('change', function (e) {
+  if (selectDisease.selectedIndex !== 0) {
+    selectDisease.classList.remove('inputWarning');
+  }
+});
+
+logo.addEventListener('click', function () {
+  pindahHalaman1();
+});
+
+selectCity.addEventListener('change', function (e) {
+  pinCity(e.target.value);
+});
+
+function pinCity(city) {
+  const jakpusPin = document.getElementById('jakpus-pin');
+  const jakutPin = document.getElementById('jakut-pin');
+  const jaktimPin = document.getElementById('jaktim-pin');
+  const jakselPin = document.getElementById('jaksel-pin');
+  const jakbarPin = document.getElementById('jakbar-pin');
+
+  switch (city) {
+    case 'jakpus':
+      jakpusPin.classList.remove('d-none');
+      jakutPin.classList.add('d-none');
+      jaktimPin.classList.add('d-none');
+      jakselPin.classList.add('d-none');
+      jakbarPin.classList.add('d-none');
+      break;
+    case 'jakut':
+      jakpusPin.classList.add('d-none');
+      jakutPin.classList.remove('d-none');
+      jaktimPin.classList.add('d-none');
+      jakselPin.classList.add('d-none');
+      jakbarPin.classList.add('d-none');
+      break;
+    case 'jaktim':
+      jakpusPin.classList.add('d-none');
+      jakutPin.classList.add('d-none');
+      jaktimPin.classList.remove('d-none');
+      jakselPin.classList.add('d-none');
+      jakbarPin.classList.add('d-none');
+      break;
+    case 'jaksel':
+      jakpusPin.classList.add('d-none');
+      jakutPin.classList.add('d-none');
+      jaktimPin.classList.add('d-none');
+      jakselPin.classList.remove('d-none');
+      jakbarPin.classList.add('d-none');
+      break;
+    case 'jakbar':
+      jakpusPin.classList.add('d-none');
+      jakutPin.classList.add('d-none');
+      jaktimPin.classList.add('d-none');
+      jakselPin.classList.add('d-none');
+      jakbarPin.classList.remove('d-none');
+      break;
+    case 'blank':
+      jakpusPin.classList.add('d-none');
+      jakutPin.classList.add('d-none');
+      jaktimPin.classList.add('d-none');
+      jakselPin.classList.add('d-none');
+      jakbarPin.classList.add('d-none');
+      break;
+    default:
+      break;
+  }
+}
+
+btnBack.addEventListener('click', function () {
+  pindahHalaman1();
+});
 
 userForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const dataPasien = tarikData(e); // {nama: luis, domisili: jaksel, penyakit: diare}
-  console.log(dataPasien);
 
-  pindahHalaman2();
+  if (dataPasien) {
+    const daftarRumahSakit = rumahSakitList(
+      dataPasien,
+      databaseRS,
+      databasePenyakit
+    );
+    showHospital(daftarRumahSakit);
+    pindahHalaman2();
+  }
 });
-//JS algo here!!!
 
 function tarikData(event) {
   const nama = event.target[0].value;
   const domisili = event.target[1].value;
   const penyakit = event.target[2].value;
+  let warningWord = [];
+
+  if (!nama) {
+    nameInput.classList.add('inputWarning');
+    warningWord.push('Nama Loe');
+  }
+  if (domisili === 'Cari Lokasi Loe!') {
+    selectCity.classList.add('inputWarning');
+    warningWord.push('Lokasi Loe');
+  }
+  if (penyakit === 'Loe Sakit Apa?') {
+    selectDisease.classList.add('inputWarning');
+    warningWord.push('Penyakit Loe');
+  }
 
   if (
     !nama ||
     domisili === 'Cari Lokasi Loe!' ||
     penyakit === 'Loe Sakit Apa?'
   ) {
-    alert('DATA LOE GAK LENGKAP!');
+    warningLabel.innerText = `Masukin ${warningWord.join(', ')}!`;
+    warningLabelGroup.classList.remove('d-none');
+    return;
   }
+
+  event.target[0].value = '';
+  event.target[0].placeholder = 'Masukin Nama Loe!';
+  event.target[1].selectedIndex = 0;
+  event.target[2].selectedIndex = 0;
+  pinCity('blank');
+  warningWord = [];
+  warningLabelGroup.classList.add('d-none');
+  nameInput.classList.remove('inputWarning');
+  selectCity.classList.remove('inputWarning');
+  selectDisease.classList.remove('inputWarning');
 
   return {
     nama,
@@ -204,7 +359,107 @@ function tarikData(event) {
   };
 }
 
+function pindahHalaman1() {
+  homepage.classList.remove('d-none');
+  selectHospital.classList.add('d-none');
+  successPage.classList.add('d-none');
+}
+
 function pindahHalaman2() {
   homepage.classList.add('d-none');
   selectHospital.classList.remove('d-none');
+  successPage.classList.add('d-none');
 }
+
+function pindahHalaman3() {
+  homepage.classList.add('d-none');
+  selectHospital.classList.add('d-none');
+  successPage.classList.remove('d-none');
+}
+
+function rumahSakitList(dataPasien, databaseRS, databasePenyakit) {
+  let output = {
+    nama: dataPasien.nama,
+    kelas: '',
+    rumahSakitList: []
+  };
+  for (const key in databasePenyakit) {
+    for (const value of databasePenyakit[key]) {
+      if (dataPasien.penyakit === value) {
+        output.kelas = key;
+        break;
+      }
+    }
+  }
+
+  const rumahSakitTerpilih = databaseRS[dataPasien.domisili];
+  for (const rumahSakit of rumahSakitTerpilih) {
+    if (rumahSakit.kamarTersedia[output.kelas] != 0) {
+      rumahSakit.kamarTersedia = rumahSakit.kamarTersedia[output.kelas];
+      output.rumahSakitList.push(rumahSakit);
+    }
+  }
+  return output;
+}
+
+function showHospital(rumahSakitList) {
+  let output = ``;
+  const cardHospitals = document.getElementById('cardHospitals');
+
+  for (const rumahSakit of rumahSakitList.rumahSakitList) {
+    output += `<div class="card m-2" style="width: 18rem">
+    <img
+      src="${rumahSakit.gambarURL}"
+      class="card-img-top"
+      alt="${rumahSakit.nama}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">${rumahSakit.nama}</h5>
+      <p class="card-text">${rumahSakit.alamat}</p>
+      <a href="#" id="${rumahSakit.nama}" class="btn btn-block btn-primary selectHospital">Pilih</a>
+    </div>
+  </div>`;
+  }
+
+  cardHospitals.innerHTML = output;
+
+  const btnsSelectHospital = document.getElementsByClassName('selectHospital');
+
+  for (const btnSelectHospital of btnsSelectHospital) {
+    btnSelectHospital.addEventListener('click', function (e) {
+      const namaPasien = document.getElementById('namaPasien');
+      const alamatRS = document.getElementById('alamatRS');
+      const kontakRS = document.getElementById('kontakRS');
+
+      namaPasien.innerText = rumahSakitList.nama;
+
+      for (const rumahSakit of rumahSakitList.rumahSakitList) {
+        alamatRS.innerText = rumahSakit.alamat;
+        kontakRS.innerText = rumahSakit.kontak;
+      }
+
+      pindahHalaman3();
+    });
+  }
+}
+
+// {
+//     nama: 'luis',
+//     kelas: 'I',
+//     rumahSakitList: [
+//       {
+//         nama: 'RS Harapan Kasih',
+//         alamat: 'Jl. Mangga no. 10',
+//         kontak: '021-5362745',
+//         kamarTersedia: 50,
+//         gambarURL: ''
+//       },
+//       {
+//         nama: 'RS Bunda',
+//         alamat: 'Jl. Pear no. 1102',
+//         kontak: '021-5345555',
+//         kamarTersedia: 5,
+//         gambarURL: ''
+//       }
+//     ]
+//   }

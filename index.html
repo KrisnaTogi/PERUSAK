@@ -98,17 +98,67 @@
             <div class="col-sm h-100 d-flex align-items-center justify-content-center" id="content-map">
               <div id="map">
                 <img src="./assets/peta-jakarta.png" alt="Peta Jakarta" />
-                <img id="jakpus-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jakut-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jaktim-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jaksel-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jakbar-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jakpus-pin" class="d-none" src="assets/pin-squid.gif" width="150px">
+                <img id="jakut-pin" class="d-none" src="assets/pin-squid.gif" width="150px">
+                <img id="jaktim-pin" class="d-none" src="assets/pin-squid.gif" width="150px">
+                <img id="jaksel-pin" class="d-none" src="assets/pin-squid.gif" width="150px">
+                <img id="jakbar-pin" class="d-none" src="assets/pin-squid.gif" width="150px">
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- AWAL CEK BOOKING LIST -->
+    <section class="halfContent bg-warning py-5" id="booking-container">
+      <div class="container h-100">
+        <div class="h-100 w-100">
+          <div class="row w-100 mb-5" id="booking-list-title">
+            <div class="col text-center">
+              <h1>Cek Booking List Loe!</h1>
+            </div>
+          </div>
+          <div class="row w-100" id="booking-list-form">
+            <div class="col">
+              <form id="booking-search">
+                <div class="form-row align-items-center">
+                  <div class="col-3 offset-4">
+                    <label class="sr-only" for="inlineFormInput">Name</label>
+                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+                  </div>
+                  <div class="col-1">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="booking-table" class="d-none">
+            <div class="row rounded-top mt-3 bg-light">
+              <div class="col-1 text-center">
+                No.
+              </div>
+              <div class="col-4 text-center">
+                Nama
+              </div>
+              <div class="col-5 text-center">
+                Nama Rumah Sakit
+              </div>
+            </div>
+            <div id="booking-list"></div>
+            <div class="row bg-light rounded-bottom">
+              <div class="col-12 text-center" style="height: 10px">
+              </div>
+            </div>
+          </div>
+          <div id="booking-fail" class="mt-3 text-center d-none">
+            <h1>Gak ada data loe woy!</h1>
+          </div>
+        </div>
+    </div>
+    </section>
+    <!-- AKHIR CEK BOOKING LIST -->
   </section>
     <!-- 
       INI AKHIR HALAMAN DEPAN 
@@ -171,6 +221,7 @@
                           INFO LENGKAP RS
                         </div>
                         <div class="card-body">
+                          <h5 class="card-title" id="namaRS"></h5>
                           <h5 class="card-title"> Alamat : <span id="alamatRS">Special title treatment</span></h5>
                           <h5 class="card-title"> Kontak : <span id="kontakRS">Special title treatment</span></h5>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -186,7 +237,23 @@
     </section>
     <!-- AKHIR PAGE SELAMAT -->
 
-    <script defer src="./coba.js"></script>
+    <!-- AWAL MODAL-->
+    <section id="modal" class="d-none">
+      <div id="modal-bg" class="d-flex align-items-center justify-content-center">
+        <div id="modal-box" class="bg-light p-4 d-flex align-items-center justify-content-center flex-wrap">
+          <div id="modal-box-title">
+            <h2>Apakah loe yakin mau booking!?</h2>
+          </div>
+          <div id="modal-box-btn">
+            <button class="btn btn-lg btn-secondary px-4" id="modal-decline">Kaga</button>
+            <button class="btn btn-lg btn-primary px-5" id="modal-accept">Iya</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AKHIR MODAL-->
+
+    <script defer src="./index.js"></script>
   </body>
 </html>
  

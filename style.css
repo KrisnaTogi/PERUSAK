@@ -25,6 +25,7 @@
 #cta {
   background-image: url('./assets/emergency.jpg');
   background-size: cover;
+  background-attachment: fixed;
 }
 
 #cta-content {
@@ -158,6 +159,14 @@ a:hover span {
   animation-iteration-count: infinite;
 }
 
-.cardHospitals {
-  height: auto;
+.footer {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  background-color: beige;
+}
+
+.credit {
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

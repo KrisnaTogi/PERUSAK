@@ -449,12 +449,12 @@ function showHospital(rumahSakitList, rumahSakitExisting) {
   const cardHospitals = document.getElementById('cardHospitals');
 
   for (const rumahSakit of rumahSakitList.rumahSakitList) {
-    output += `<div class="card m-2" style="width: 18rem">
+    output += `<div class="card m-2 shadow" style="width: 18rem; height: 325px">
     <img
       src="${rumahSakit.gambarURL}"
-      class="card-img-top"
+      class="w-100 h-50"
       alt="${rumahSakit.nama}"
-      style="heigth: 200px !important"
+    
     />
     <div class="card-body">
       <h5 class="card-title">${rumahSakit.nama}</h5>
@@ -617,6 +617,7 @@ function showBookingList(namaPasien) {
 
       btnDelete.addEventListener('click', function () {
         deleteBooking(j, namaPasien);
+        showBookingList(namaPasien); // <== recursive
       });
     }
   }

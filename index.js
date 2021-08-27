@@ -212,6 +212,7 @@ let dbPasien = [
     }
   }
 ];
+
 let tempSelectionBook = {};
 
 let userForm = document.getElementById('user-form');
@@ -229,6 +230,10 @@ const logo = document.getElementById('logo');
 const modal = document.getElementById('modal');
 const btnAccept = document.getElementById('modal-accept');
 const btnDecline = document.getElementById('modal-decline');
+const bookingSearch = document.getElementById('booking-search');
+const bookingTable = document.getElementById('booking-table');
+const bookingList = document.getElementById('booking-list');
+const bookingFail = document.getElementById('booking-fail');
 
 nameInput.addEventListener('keyup', function (e) {
   if (e.target.value) {
@@ -518,9 +523,6 @@ function closeModal() {
 }
 
 function showBookingList(namaPasien) {
-  const bookingTable = document.getElementById('booking-table');
-  const bookingList = document.getElementById('booking-list');
-  const bookingFail = document.getElementById('booking-fail');
   bookingList.innerHTML = ``;
 
   for (let i = 0; i < dbPasien.length; i++) {
@@ -544,13 +546,16 @@ function showBookingList(namaPasien) {
         <button class="btn btn-primary btnUpdate">Update</button>
       </div>
       <div class="col-1 text-center">
-        <a href="#" class="btn btn-danger">Delete</a>
+        <button class="btn btn-danger btnDelete">Delete</button>
       </div>
     </div>`;
+
       const btnsUpdate = document.getElementsByClassName('btnUpdate');
+      const btnsDelete = document.getElementsByClassName('btnDelete');
 
       for (let j = 0; j < btnsUpdate.length; j++) {
         const btnUpdate = btnsUpdate[j];
+        const btnDelete = btnsDelete[j];
 
         btnUpdate.addEventListener('click', function () {
           const dataPasien = {
@@ -570,6 +575,18 @@ function showBookingList(namaPasien) {
 
           pindahHalaman2();
         });
+
+        btnDelete.addEventListener('click', function () {
+          deleteBooking(j);
+
+          // for (let i = 0; i <= dbPasien.length; i++) {
+          //   if (dbPasien.length === 0) {
+          //     bookingTable.classList.add('d-none');
+          //   } else if (dbPasien[i].nama !== namaPasien) {
+          //     bookingTable.classList.add('d-none');
+          //   }
+          // }
+        });
       }
     } else {
       bookingTable.classList.add('d-none');
@@ -578,8 +595,6 @@ function showBookingList(namaPasien) {
   }
 }
 
-const bookingSearch = document.getElementById('booking-search');
-
 bookingSearch.addEventListener('submit', function (e) {
   e.preventDefault();
   const namaPasien = e.target[0].value;
@@ -587,6 +602,12 @@ bookingSearch.addEventListener('submit', function (e) {
   showBookingList(namaPasien);
   e.target[0].value = '';
 });
+
+function deleteBooking(index) {
+  // luis di RS harapan kasih
+  // index 0
+  dbPasien.splice(index, 1);
+}
 
 // {
 //     nama: 'luis',

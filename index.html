@@ -12,13 +12,18 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <title>PERUSAK JAKARTA</title>
   </head>
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="header">
       <div class="mx-auto">
-        <a class="navbar-brand mx-auto" href="#" id="logo">PERUSAK<img src="./assets/hclogo-7.png" height="75px" class="mx-3">JAKARTA</a>
+        <a class="navbar-brand mx-auto" href="#" id="logo"><span>PERUSAK</span><img src="./assets/hclogo-7.png" height="75px" class="mx-3 anim" animate__animated animate__pulse><span>JAKARTA</span></a>
       </div>
     </nav>
 
@@ -39,10 +44,11 @@
       "
     >
       <div class="w-100 d-flex align-items-center justify-content-center h-100" id="cta-content">
-        <div class="text-center">
-          <h1>LOE BUTUH RUMAH SAKIT?</h1>
+        <div class="text-center padding">
+          <p class="description">Pencari Rumah Sakit Terpercaya, suwer bener terpercaya</p>
+          <h1 class="bold">LOE BUTUH RUMAH SAKIT?</h1>
           <p>DARIPADA SAKIT-SAKITAN MENDING CARI RUMAH SAKIT</p>
-          <a href="#user-page" class="btn btn-danger btn-lg p-4">LOE KLIK DISINI!</a>
+          <a href="#user-page" class="btn btn-danger btn-lg p-4 btn-loe">LOE KLIK DISINI!</a>
         </div>
       </div>
     </div>
@@ -98,17 +104,67 @@
             <div class="col-sm h-100 d-flex align-items-center justify-content-center" id="content-map">
               <div id="map">
                 <img src="./assets/peta-jakarta.png" alt="Peta Jakarta" />
-                <img id="jakpus-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jakut-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jaktim-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jaksel-pin" class="d-none" src="assets/pin.png" width="25px">
-                <img id="jakbar-pin" class="d-none" src="assets/pin.png" width="25px">
+                <img id="jakpus-pin" class="d-none" src="assets/pin-squid.gif" width="130px">
+                <img id="jakut-pin" class="d-none" src="assets/pin-squid.gif" width="130px">
+                <img id="jaktim-pin" class="d-none" src="assets/pin-squid.gif" width="130px">
+                <img id="jaksel-pin" class="d-none" src="assets/pin-squid.gif" width="130px">
+                <img id="jakbar-pin" class="d-none" src="assets/pin-squid.gif" width="130px">
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- AWAL CEK BOOKING LIST -->
+    <section class="halfContent bg-warning py-5" id="booking-container">
+      <div class="container h-100">
+        <div class="h-100 w-100">
+          <div class="row w-100 mb-5" id="booking-list-title">
+            <div class="col text-center">
+              <h1>Cek Booking List Loe!</h1>
+            </div>
+          </div>
+          <div class="row w-100" id="booking-list-form">
+            <div class="col">
+              <form id="booking-search">
+                <div class="form-row align-items-center">
+                  <div class="col-3 offset-4">
+                    <label class="sr-only" for="inlineFormInput">Name</label>
+                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Bookingan Eloe!">
+                  </div>
+                  <div class="col-1">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="booking-table" class="d-none">
+            <div class="row rounded-top mt-3 bg-light">
+              <div class="col-1 text-center">
+                No.
+              </div>
+              <div class="col-4 text-center">
+                Nama
+              </div>
+              <div class="col-5 text-center">
+                Nama Rumah Sakit
+              </div>
+            </div>
+            <div id="booking-list"></div>
+            <div class="row bg-light rounded-bottom">
+              <div class="col-12 text-center" style="height: 10px">
+              </div>
+            </div>
+          </div>
+          <div id="booking-fail" class="mt-3 text-center d-none">
+            <h1>Gak ada data loe woy!</h1>
+          </div>
+        </div>
+    </div>
+    </section>
+    <!-- AKHIR CEK BOOKING LIST -->
   </section>
     <!-- 
       INI AKHIR HALAMAN DEPAN 
@@ -118,6 +174,7 @@
     AWAL HALAMAN PILIHAN RUMAH SAKIT
     -->
     <section id="selectHospital" class="fullContent d-none">
+      <!-- <img src=".assets/bg-last-page.JPG" /> -->
       <div
         class="
           container
@@ -131,7 +188,8 @@
         <div class="w-100" id="content-select-hospital">
           <div class="row">
             <div class="col-12 text-center">
-              <h1>Pilih Rumah Sakit Loe!</h1>
+              <h1 class="bold">Pilih Rumah Sakit Loe!</h1>
+              <h4>Penyakit loe tergolong kelas <span id="spanKelasPenyakit"></span> </h4>
             </div>
           </div>
           <div class="row">
@@ -171,9 +229,10 @@
                           INFO LENGKAP RS
                         </div>
                         <div class="card-body">
+                          <h5 class="card-title" id="namaRS"></h5>
                           <h5 class="card-title"> Alamat : <span id="alamatRS">Special title treatment</span></h5>
                           <h5 class="card-title"> Kontak : <span id="kontakRS">Special title treatment</span></h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <p class="card-text">Uhuy!</p>
                           <a href="#" id="btnBack" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
@@ -186,7 +245,35 @@
     </section>
     <!-- AKHIR PAGE SELAMAT -->
 
-    <script defer src="./coba.js"></script>
+    <!-- AWAL MODAL-->
+    <section id="modal" class="d-none">
+      <div id="modal-bg" class="d-flex align-items-center justify-content-center">
+        <div id="modal-box" class="bg-light p-4 d-flex align-items-center justify-content-center flex-wrap">
+          <div id="modal-box-title">
+            <h2>Apakah loe yakin mau booking!?</h2>
+          </div>
+          <div id="modal-box-btn">
+            <button class="btn btn-lg btn-secondary px-4" id="modal-decline">Kaga</button>
+            <button class="btn btn-lg btn-primary px-5" id="modal-accept">Iya</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AKHIR MODAL-->
+
+    <script defer src="./test.js"></script>
+  <footer class="footer">
+    <span class="credit">Awak kapal:</span><br>
+    <span>Agnia Naufal Fridayana Budiman</span>
+    <span>-</span>
+    <span>Colin Maximillion Halim</span>
+    <span>-</span>
+    <span>Gilbert Imanuel</span>
+    <span>-</span>
+    <span>Julluis Wiputra</span>  
+    <span>-</span>
+    <span>Krisna Togi</span>
+  </footer>
   </body>
 </html>
  

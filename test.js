@@ -198,6 +198,32 @@ const databasePenyakit = {
   III: ['Diare', 'Sakit Kepala', 'Iritasi', 'Lapar']
 };
 
+/**
+ * let dbPasien = {
+ * luis: [nama: luis, dst..],
+ * naufal: [nama: naufal], [nama: naufal]
+ * }
+ */
+
+let dbPasien = {
+  luis: [
+    {
+      nama: 'luis',
+      domisili: 'jaksel',
+      kelas: 'I',
+      rumahSakit: {
+        nama: 'RS Harapan Kasih',
+        alamat: 'Jl. Mangga no. 10',
+        kontak: '021-5362745',
+        kamarTersedia: 50,
+        gambarURL: ''
+      }
+    }
+  ]
+};
+
+let tempSelectionBook = {};
+
 let userForm = document.getElementById('user-form');
 let userPage = document.getElementById('user-page');
 const homepage = document.getElementById('homepage');
@@ -210,6 +236,14 @@ const warningLabelGroup = document.getElementById('warning-label-group');
 const successPage = document.getElementById('successPage');
 const btnBack = document.getElementById('btnBack');
 const logo = document.getElementById('logo');
+const modal = document.getElementById('modal');
+const btnAccept = document.getElementById('modal-accept');
+const btnDecline = document.getElementById('modal-decline');
+const bookingSearch = document.getElementById('booking-search');
+const bookingTable = document.getElementById('booking-table');
+const bookingList = document.getElementById('booking-list');
+const bookingFail = document.getElementById('booking-fail');
+const spanKelasPenyakit = document.getElementById('spanKelasPenyakit');
 
 nameInput.addEventListener('keyup', function (e) {
   if (e.target.value) {
@@ -231,6 +265,7 @@ selectDisease.addEventListener('change', function (e) {
 
 logo.addEventListener('click', function () {
   pindahHalaman1();
+  bookingTable.classList.add('d-none');
 });
 
 selectCity.addEventListener('change', function (e) {
@@ -294,6 +329,7 @@ function pinCity(city) {
 
 btnBack.addEventListener('click', function () {
   pindahHalaman1();
+  bookingTable.classList.add('d-none');
 });
 
 userForm.addEventListener('submit', function (e) {
@@ -305,9 +341,11 @@ userForm.addEventListener('submit', function (e) {
     const daftarRumahSakit = rumahSakitList(
       dataPasien,
       databaseRS,
+      null,
       databasePenyakit
     );
     showHospital(daftarRumahSakit);
+
     pindahHalaman2();
   }
 });
@@ -336,7 +374,7 @@ function tarikData(event) {
     domisili === 'Cari Lokasi Loe!' ||
     penyakit === 'Loe Sakit Apa?'
   ) {
-    warningLabel.innerText = `Masukin ${warningWord.join(', ')}!`;
+    warningLabel.textContent = `Masukin ${warningWord.join(', ')}!`;
     warningLabelGroup.classList.remove('d-none');
     return;
   }
@@ -377,48 +415,60 @@ function pindahHalaman3() {
   successPage.classList.remove('d-none');
 }
 
-function rumahSakitList(dataPasien, databaseRS, databasePenyakit) {
+function rumahSakitList(dataPasien, databaseRS, kelasPasien, databasePenyakit) {
   let output = {
     nama: dataPasien.nama,
+    domisili: dataPasien.domisili,
     kelas: '',
     rumahSakitList: []
   };
-  for (const key in databasePenyakit) {
-    for (const value of databasePenyakit[key]) {
-      if (dataPasien.penyakit === value) {
-        output.kelas = key;
-        break;
+
+  if (!kelasPasien) {
+    for (const key in databasePenyakit) {
+      for (const value of databasePenyakit[key]) {
+        if (dataPasien.penyakit === value) {
+          output.kelas = key;
+          break;
+        }
       }
     }
+  } else {
+    output.kelas = kelasPasien;
   }
 
-  const rumahSakitTerpilih = databaseRS[dataPasien.domisili];
+  const rumahSakitTerpilih = databaseRS[dataPasien.domisili]; // reference
+
   for (const rumahSakit of rumahSakitTerpilih) {
     if (rumahSakit.kamarTersedia[output.kelas] != 0) {
-      rumahSakit.kamarTersedia = rumahSakit.kamarTersedia[output.kelas];
+      // rumahSakit.kamarTersedia = rumahSakit.kamarTersedia[output.kelas];
       output.rumahSakitList.push(rumahSakit);
     }
   }
   return output;
 }
 
-function showHospital(rumahSakitList) {
+function showHospital(rumahSakitList, rumahSakitExisting) {
   let output = ``;
   const cardHospitals = document.getElementById('cardHospitals');
 
+  spanKelasPenyakit.innerText = rumahSakitList.kelas;
+
+  console.log(rumahSakitList);
+
   for (const rumahSakit of rumahSakitList.rumahSakitList) {
-    output += `<div class="card m-2" style="width: 18rem">
-    <img
-      src="${rumahSakit.gambarURL}"
-      class="card-img-top"
-      alt="${rumahSakit.nama}"
-    />
-    <div class="card-body">
-      <h5 class="card-title">${rumahSakit.nama}</h5>
-      <p class="card-text">${rumahSakit.alamat}</p>
-      <a href="#" id="${rumahSakit.nama}" class="btn btn-block btn-primary selectHospital">Pilih</a>
-    </div>
-  </div>`;
+    output += `<div class="card m-2" style="width: 18rem; height: 325px">
+      <img
+        src="${rumahSakit.gambarURL}"
+        class="w-100 h-50"
+        alt="${rumahSakit.nama}"
+        style="heigth: 200px !important"
+      />
+      <div class="card-body">
+        <h5 class="card-title">${rumahSakit.nama}</h5>
+        <p class="card-text">${rumahSakit.alamat}</p>
+        <a href="#" id="${rumahSakit.nama}" class="btn btn-block btn-primary selectHospital">Pilih</a>
+      </div>
+    </div>`;
   }
 
   cardHospitals.innerHTML = output;
@@ -427,24 +477,250 @@ function showHospital(rumahSakitList) {
 
   for (const btnSelectHospital of btnsSelectHospital) {
     btnSelectHospital.addEventListener('click', function (e) {
-      const namaPasien = document.getElementById('namaPasien');
-      const alamatRS = document.getElementById('alamatRS');
-      const kontakRS = document.getElementById('kontakRS');
-
-      namaPasien.innerText = rumahSakitList.nama;
+      const rumahSakitTujuan = {
+        nama: rumahSakitList.nama,
+        kelas: rumahSakitList.kelas,
+        domisili: rumahSakitList.domisili
+      };
 
       for (const rumahSakit of rumahSakitList.rumahSakitList) {
-        alamatRS.innerText = rumahSakit.alamat;
-        kontakRS.innerText = rumahSakit.kontak;
+        if (rumahSakit.nama === btnSelectHospital.id) {
+          rumahSakitTujuan.rumahSakit = rumahSakit;
+        }
       }
 
-      pindahHalaman3();
+      tempSelectionBook = rumahSakitTujuan;
+
+      if (rumahSakitExisting) {
+        for (let i = 0; i < dbPasien.length; i++) {
+          const pasien = dbPasien[i];
+
+          if (rumahSakitExisting === pasien.rumahSakit.nama) {
+            dbPasien.splice(i, 1);
+          }
+        }
+      }
+
+      showModal();
     });
   }
 }
 
+btnDecline.addEventListener('click', function () {
+  modal.classList.add('d-none');
+});
+
+let rumahSakitHapus = '';
+
+btnAccept.addEventListener('click', function () {
+  if (!dbPasien[tempSelectionBook.nama]) dbPasien[tempSelectionBook.nama] = [];
+
+  dbPasien[tempSelectionBook.nama].push(tempSelectionBook);
+
+  for (let i = 0; i < dbPasien[tempSelectionBook.nama].length; i++) {
+    if (
+      dbPasien[tempSelectionBook.nama][i].rumahSakit['nama'] === rumahSakitHapus
+    ) {
+      console.log('asd');
+      dbPasien[tempSelectionBook.nama].splice(i, 1);
+      rumahSakitHapus = '';
+    }
+  }
+
+  closeModal();
+
+  const namaPasien = document.getElementById('namaPasien');
+  const namaRS = document.getElementById('namaRS');
+  const alamatRS = document.getElementById('alamatRS');
+  const kontakRS = document.getElementById('kontakRS');
+
+  namaPasien.textContent = tempSelectionBook.nama;
+  namaRS.textContent = tempSelectionBook['rumahSakit'].nama;
+  alamatRS.textContent = tempSelectionBook['rumahSakit'].alamat;
+  kontakRS.textContent = tempSelectionBook['rumahSakit'].kontak;
+
+  pindahHalaman3();
+});
+
+function showModal() {
+  modal.classList.remove('d-none');
+}
+
+function closeModal() {
+  modal.classList.add('d-none');
+}
+
+// let dbPasien = {
+//   luis: [
+//     {
+//       nama: 'luis',
+//       domisili: 'jaksel',
+//       kelas: 'I',
+//       rumahSakit: {
+//         nama: 'RS Harapan Kasih',
+//         alamat: 'Jl. Mangga no. 10',
+//         kontak: '021-5362745',
+//         kamarTersedia: 50,
+//         gambarURL: ''
+//       }
+//     }
+//   ]
+// };
+
+function showBookingList(namaPasien) {
+  // console.log(dbPasien, '<<<< ini DBpasien');
+  if (!dbPasien[namaPasien].length) {
+    bookingTable.classList.add('d-none');
+  } else {
+    bookingList.innerHTML = ``;
+    bookingTable.classList.remove('d-none');
+    bookingFail.classList.add('d-none');
+
+    for (let i = 0; i < dbPasien[namaPasien].length; i++) {
+      const pasien = dbPasien[namaPasien][i];
+      console.log(pasien);
+
+      bookingList.innerHTML += `<div class="row py-1 bg-light d-flex justify-content-center align-items-center">
+          <div class="col-1 text-center">
+             ${i + 1}
+           </div>
+              <div class="col-4">
+                ${pasien.nama}
+              </div>
+              <div class="col-5 text-center">
+                ${pasien.rumahSakit.nama}
+              </div>
+              <div class="col-1 text-center">
+                <button class="btn btn-primary btnUpdate">Update</button>
+              </div>
+              <div class="col-1 text-center">
+                <button class="btn btn-danger btnDelete">Delete</button>
+              </div>
+            </div>`;
+
+      const btnsUpdate = document.getElementsByClassName('btnUpdate');
+      const btnsDelete = document.getElementsByClassName('btnDelete');
+
+      for (let j = 0; j < btnsUpdate.length; j++) {
+        const btnUpdate = btnsUpdate[j];
+        const btnDelete = btnsDelete[j];
+
+        btnUpdate.addEventListener('click', function () {
+          const dataPasien = {
+            nama: pasien.nama,
+            domisili: dbPasien[namaPasien][j].domisili
+          };
+
+          showHospital(
+            rumahSakitList(
+              dataPasien,
+              databaseRS,
+              dbPasien[namaPasien][j].kelas,
+              databasePenyakit
+            ),
+            dbPasien[namaPasien][j].rumahSakit.nama
+          );
+
+          rumahSakitHapus = dbPasien[namaPasien][j].rumahSakit.nama;
+
+          pindahHalaman2();
+        });
+
+        btnDelete.addEventListener('click', function () {
+          deleteBooking(j, namaPasien);
+        });
+      }
+    }
+  }
+
+  // for (let i = 0; i < dbPasien.length; i++) {
+  //   const pasien = dbPasien[i];
+
+  //   if (namaPasien === pasien.nama) {
+  //     bookingTable.classList.remove('d-none');
+  //     bookingFail.classList.add('d-none');
+
+  //     bookingList.innerHTML += `<div class="row py-1 bg-light d-flex justify-content-center align-items-center">
+  //     <div class="col-1 text-center">
+  //       ${i + 1}
+  //     </div>
+  //     <div class="col-4">
+  //       ${pasien.nama}
+  //     </div>
+  //     <div class="col-5 text-center">
+  //       ${pasien.rumahSakit.nama}
+  //     </div>
+  //     <div class="col-1 text-center">
+  //       <button class="btn btn-primary btnUpdate">Update</button>
+  //     </div>
+  //     <div class="col-1 text-center">
+  //       <button class="btn btn-danger btnDelete">Delete</button>
+  //     </div>
+  //   </div>`;
+
+  //     const btnsUpdate = document.getElementsByClassName('btnUpdate');
+  //     const btnsDelete = document.getElementsByClassName('btnDelete');
+
+  //     for (let j = 0; j < btnsUpdate.length; j++) {
+  //       const btnUpdate = btnsUpdate[j];
+  //       const btnDelete = btnsDelete[j];
+
+  //       btnUpdate.addEventListener('click', function () {
+  //         const dataPasien = {
+  //           nama: pasien.nama,
+  //           domisili: dbPasien[j].domisili
+  //         };
+
+  //         showHospital(
+  //           rumahSakitList(
+  //             dataPasien,
+  //             databaseRS,
+  //             dbPasien[j].kelas,
+  //             databasePenyakit
+  //           ),
+  //           dbPasien[j].rumahSakit.nama
+  //         );
+
+  //         pindahHalaman2();
+  //       });
+
+  //       btnDelete.addEventListener('click', function () {
+  //         deleteBooking(j);
+
+  //         // for (let i = 0; i <= dbPasien.length; i++) {
+  //         //   if (dbPasien.length === 0) {
+  //         //     bookingTable.classList.add('d-none');
+  //         //   } else if (dbPasien[i].nama !== namaPasien) {
+  //         //     bookingTable.classList.add('d-none');
+  //         //   }
+  //         // }
+  //       });
+  //     }
+  //   } else {
+  //     bookingTable.classList.add('d-none');
+  //     bookingFail.classList.remove('d-none');
+  //   }
+  // }
+}
+
+bookingSearch.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const namaPasien = e.target[0].value;
+
+  showBookingList(namaPasien);
+  e.target[0].value = '';
+});
+
+function deleteBooking(index, namaPasien) {
+  // luis di RS harapan kasih
+  // index 0
+  dbPasien[namaPasien].splice(index, 1);
+  showBookingList(namaPasien);
+}
+
 // {
 //     nama: 'luis',
+//      domisili: 'jaksel
 //     kelas: 'I',
 //     rumahSakitList: [
 //       {
@@ -463,3 +739,14 @@ function showHospital(rumahSakitList) {
 //       }
 //     ]
 //   }
+
+// {
+//     nama: 'luis',
+//     rumahSakit: {
+//         nama: 'RS Harapan Kasih',
+//         alamat: 'Jl. Mangga no. 10',
+//         kontak: '021-5362745',
+//         kamarTersedia: 50,
+//         gambarURL: ''
+//       }
+// }

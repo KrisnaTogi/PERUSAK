@@ -131,13 +131,6 @@ a:hover span {
   color: rgb(251, 75, 75);
 }
 
-/* .btn-loe {
-  transition: all 0.2s;
-}
-.btn-loe:hover {
-  transform: scale(1.1);
-} */
-
 .btn-loe {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
   transform: scale(1);
@@ -159,4 +152,12 @@ a:hover span {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
+}
+
+.anim {
+  animation-iteration-count: infinite;
+}
+
+.cardHospitals {
+  height: auto;
 }
